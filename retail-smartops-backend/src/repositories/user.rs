@@ -29,7 +29,7 @@ impl UserRepository {
     /// # Returns
     ///
     /// * `Result<bool, AppError>` - `Ok(true)` if the username exists, `Ok(false)` otherwise, or an `AppError`.
-    pub async fn check_if_username_exists(&self, username: &str) -> Result<bool, AppError> {
+    async fn check_if_username_exists(&self, username: &str) -> Result<bool, AppError> {
         let username_count = sqlx::query!(
             "SELECT COUNT(*) as count FROM users WHERE username = $1",
             username
@@ -59,7 +59,7 @@ impl UserRepository {
     /// # Returns
     ///
     /// * `Result<bool, AppError>` - `Ok(true)` if the email exists, `Ok(false)` otherwise, or an `AppError`.
-    pub async fn check_if_email_exists(&self, email: &str) -> Result<bool, AppError> {
+    async fn check_if_email_exists(&self, email: &str) -> Result<bool, AppError> {
         let email_count = sqlx::query!(
             "SELECT COUNT(*) as count FROM users WHERE email = $1",
             email
@@ -89,7 +89,7 @@ impl UserRepository {
     /// # Returns
     ///
     /// * `Result<bool, AppError>` - `Ok(true)` if the ID exists, `Ok(false)` otherwise, or an `AppError`.
-    pub async fn check_if_id_exists(&self, id: &Uuid) -> Result<bool, AppError> {
+    async fn check_if_id_exists(&self, id: &Uuid) -> Result<bool, AppError> {
         let id_count = sqlx::query!("SELECT COUNT(id) as count FROM users WHERE id = $1", id)
             .fetch_one(&self.pool)
             .await?

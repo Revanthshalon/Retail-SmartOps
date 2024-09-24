@@ -44,9 +44,9 @@ impl UserRoleRepository {
             user_id,
             role_id
         )
-            .fetch_one(&self.pool)
-            .await?
-            .count;
+        .fetch_one(&self.pool)
+        .await?
+        .count;
 
         let count = match user_role_count {
             Some(count) => count,
@@ -140,8 +140,8 @@ impl UserRoleRepositoryTrait for UserRoleRepository {
             user_id,
             role_id
         )
-            .fetch_one(&self.pool)
-            .await?;
+        .fetch_one(&self.pool)
+        .await?;
 
         Ok(user_role)
     }
@@ -176,8 +176,8 @@ impl UserRoleRepositoryTrait for UserRoleRepository {
             role_id,
             user_id
         )
-            .fetch_one(&self.pool)
-            .await?;
+        .fetch_one(&self.pool)
+        .await?;
 
         Ok(user_role)
     }
@@ -205,8 +205,8 @@ impl UserRoleRepositoryTrait for UserRoleRepository {
             user_id,
             role_id
         )
-            .execute(&self.pool)
-            .await?;
+        .execute(&self.pool)
+        .await?;
 
         if query_result.rows_affected() == 0 {
             return Err(AppError::InternalServerError(

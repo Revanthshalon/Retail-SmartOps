@@ -34,7 +34,7 @@ pub async fn run_app(listener: Option<TcpListener>) -> Result<(), std::io::Error
                 "{}=debug,tower_http=debug,axum::rejection=trace",
                 env!("CARGO_CRATE_NAME")
             )
-                .into()
+            .into()
         }))
         .with(fmt::layer())
         .init();
